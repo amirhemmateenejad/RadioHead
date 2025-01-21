@@ -194,7 +194,7 @@ void RH_ASK::timerSetup()
     timer.pause();
 
 #ifdef BOARD_NAME
-    void interrupt(HardwareTimer*); // defined below
+    void interrupt(); // defined below
     // ST's Arduino Core STM32, https://github.com/stm32duino/Arduino_Core_STM32
     uint16_t us=(1000000/8)/_speed;
     timer.setMode(1, TIMER_OUTPUT_COMPARE);
@@ -684,7 +684,7 @@ void TC1_Handler()
 }
 #elif defined(BOARD_NAME)
 // ST's Arduino Core STM32, https://github.com/stm32duino/Arduino_Core_STM32
-void interrupt(HardwareTimer*)
+void interrupt()
 {
     thisASKDriver->handleTimerInterrupt();
 }
